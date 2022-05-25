@@ -1,23 +1,21 @@
 version: "3.8"
 
 services:
-  "ita":
-    image: exastro/it-automation:1.8.1-ja
+  it-automation:
+    image: ghcr.io/exastro-suite/it-automation:1.10.0-ja-ubi8
     privileged: true
     extra_hosts:
       - "exastro-it-automation:127.0.0.1"
     ports:
       - "8080:80"
-    restart: on-failure
     volumes:
       - database:/exastro-database-volume
       - file:/exastro-file-volume
 
   target:
-    build: ./centos8-with-ssh-server
-    image: centos8-with-ssh-server:1.0.0
+    build: ./test-ssh-server
+    image: test-ssh-server:1.0.0
     privileged: true
-    restart: on-failure
 
 volumes:
   database:

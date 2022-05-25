@@ -1,4 +1,4 @@
-FROM centos:8
+FROM almalinux:8
 
 RUN dnf -y install openssh-server
 RUN echo 'root:password' | chpasswd
